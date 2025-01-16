@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
     public KeyCode switchKey;
     public string inputID;
     private Rigidbody playerRb;
-    [SerializeField] GameObject centerOfMass;
     [SerializeField] TextMeshProUGUI speedometerText;
     [SerializeField] TextMeshProUGUI rpmText;
     [SerializeField] List<WheelCollider> allWheels;
@@ -26,7 +25,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-        // playerRb.centerOfMass = centerOfMass.transform.position;
     }
 
     void Update()
@@ -47,7 +45,6 @@ public class PlayerController : MonoBehaviour
         if (isOnGround())
         {
             //Move the vehicle forward
-            //transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
             playerRb.AddRelativeForce(Vector3.forward * verticalInput * horsePower);
             //Rotates the car based on horizontal input
             transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
